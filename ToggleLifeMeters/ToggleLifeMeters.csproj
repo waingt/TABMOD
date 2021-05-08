@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\CopyToGameFolder\Mods\ToggleLifeMeters\</OutputPath>
+    <OutputPath>..\bin\Mods\ToggleLifeMeters\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -56,8 +56,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>del "C:\Users\qiang\Desktop\harmony.log.txt"
-xcopy "D:\Documents\code\TABMOD\CopyToGameFolder\" "D:\Program Files (x86)\Steam\steamapps\common\They Are Billions\" /E /Y
-"C:\Users\qiang\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Steam\They Are Billions.url"</PostBuildEvent>
+    <PostBuildEvent>del "%25USERPROFILE%25\Desktop\harmony.log.txt" /Q
+pushd "$(SolutionDir)\bin"
+powershell .\CopyThings.ps1
+popd</PostBuildEvent>
   </PropertyGroup>
 </Project>

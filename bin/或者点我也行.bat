@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy ByPass ./CopyThings.ps1
